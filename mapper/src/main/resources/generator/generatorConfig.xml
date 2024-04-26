@@ -17,7 +17,7 @@
         </plugin>
 
         <!-- 配置数据库连接 -->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/mall"
                         userId="root" password="1234">
         </jdbcConnection>
@@ -32,6 +32,7 @@
         <javaClientGenerator targetPackage="com.lb.mall.dao" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!-- 配置需要指定生成的数据库和表，% 代表所有表 -->
-        <table tableName="%"></table>
+        <table tableName="%">
+        </table>
     </context>
 </generatorConfiguration>
