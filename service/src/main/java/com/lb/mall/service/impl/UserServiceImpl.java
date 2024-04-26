@@ -1,11 +1,8 @@
 package com.lb.mall.service.impl;
 
-import com.lb.mall.dao.UserDAO;
-import com.lb.mall.entity.User;
 import com.lb.mall.service.UserService;
 import com.lb.mall.utils.MD5Utils;
 import com.lb.mall.vo.ResultVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

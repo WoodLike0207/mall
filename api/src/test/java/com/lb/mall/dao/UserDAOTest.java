@@ -1,7 +1,6 @@
 package com.lb.mall.dao;
 
 import com.lb.ApiApplication;
-import com.lb.mall.entity.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
