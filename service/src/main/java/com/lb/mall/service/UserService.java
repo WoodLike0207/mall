@@ -1,5 +1,6 @@
 package com.lb.mall.service;
 
+import com.lb.mall.vo.BasicResultVO;
 import com.lb.mall.vo.ResultVo;
 
 public interface UserService {
