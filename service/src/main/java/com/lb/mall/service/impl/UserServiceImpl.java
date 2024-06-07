@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
                         .setIssuedAt(new Date())             // 设置token的生成时间
                         .setId(users.get(0).getUserId() + "")   // 设置用户id 为token id
                         .setClaims(map)     // map中可以存放用户的角色权限
-                        .setExpiration(new Date(System.currentTimeMillis() + 30 * 1000))  // 设置token的过期时间
+                        .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))  // 设置token的过期时间
                         .signWith(SignatureAlgorithm.HS256, "MALL666")  // 设置加密方式和加密密码
                         .compact();
 
