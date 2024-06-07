@@ -16,7 +16,12 @@ import java.io.PrintWriter;
 public class CheckTokenInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getParameter("token");
+        String method = request.getMethod();
+        if ("OPTIONS".equalsIgnoreCase(method)){
+            return true;
+        }
+
+        String token = request.getHeader("token");
         if (token == null){
             return false;
         }else {

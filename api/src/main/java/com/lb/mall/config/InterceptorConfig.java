@@ -14,7 +14,6 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        System.out.println("token------------");
          registry.addInterceptor(checkTokenInterceptor)
                  .addPathPatterns("/shopcart/**")
                  .addPathPatterns("/orders/**")
