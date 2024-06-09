@@ -16,4 +16,21 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+
+  <select id="listIndexImgs" resultMap="BaseResultMap">
+    SELECT
+      img_id,
+      img_url,
+      img_bg_color,
+      prod_id,
+      category_id,
+      index_type,
+      seq,
+      status,
+      create_time,
+      update_time
+    FROM index_img
+    WHERE status = 1
+    ORDER BY seq;
+  </select>
 </mapper>
