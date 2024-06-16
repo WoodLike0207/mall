@@ -2,6 +2,7 @@ package com.lb.mall.controller;
 
 import com.lb.mall.service.CategoryService;
 import com.lb.mall.service.IndexImgService;
+import com.lb.mall.service.ProductService;
 import com.lb.mall.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,6 +22,9 @@ public class IndexController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private ProductService productService;
+
     @ApiOperation("首页轮播图接口")
     @GetMapping("/indeximg")
     public ResultVo listIndexImgs(){
@@ -31,6 +35,13 @@ public class IndexController {
     @GetMapping("/category-list")
     public ResultVo listCategory(){
         return categoryService.listCategories();
+    }
+
+
+    @ApiOperation("查询推荐商品接口")
+    @GetMapping("/list-recommends")
+    public ResultVo listRecommendProducts(){
+        return productService.listRecommendProducts();
     }
 }
  

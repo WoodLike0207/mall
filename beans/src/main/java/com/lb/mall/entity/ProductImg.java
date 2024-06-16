@@ -45,6 +45,19 @@ public class ProductImg {
     @Column(name = "updated_time")
     private Date updatedTime;
 
+    @Override
+    public String toString() {
+        return "ProductImg{" +
+                "id='" + id + '\'' +
+                ", itemId='" + itemId + '\'' +
+                ", url='" + url + '\'' +
+                ", sort=" + sort +
+                ", isMain=" + isMain +
+                ", createdTime=" + createdTime +
+                ", updatedTime=" + updatedTime +
+                '}';
+    }
+
     /**
      * 获取图片主键
      *
