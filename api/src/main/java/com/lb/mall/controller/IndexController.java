@@ -38,10 +38,16 @@ public class IndexController {
     }
 
 
-    @ApiOperation("查询推荐商品接口")
+    @ApiOperation("新品推荐接口")
     @GetMapping("/list-recommends")
     public ResultVo listRecommendProducts(){
         return productService.listRecommendProducts();
+    }
+
+    @ApiOperation("分类推荐接口")
+    @GetMapping("/category-recommends")
+    public ResultVo listRecommendProductsByCategory(){
+        return categoryService.listFirstLevelCategories();
     }
 }
  

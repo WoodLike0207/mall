@@ -2,9 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lb.mall.dao.CategoryMapper">
   <resultMap id="BaseResultMap" type="com.lb.mall.entity.Category">
-    <!--
-      WARNING - @mbg.generated
-    -->
     <id column="category_id" jdbcType="INTEGER" property="categoryId" />
     <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
     <result column="category_level" jdbcType="INTEGER" property="categoryLevel" />
@@ -83,7 +80,7 @@
   </resultMap>
 
    <!-- 根据⽗级分类的id查询⼦级分类 -->
-  <select id="selectAllCategories2" resultMap="CategoryVOMap2">
+    <select id="selectAllCategories2" resultMap="CategoryVOMap2">
       select
           category_id,
           category_name,
@@ -96,4 +93,31 @@
       from category
       where parent_id=#{parentId}
   </select>
+
+    <resultMap id="CategoryVOMap3" type="com.lb.mall.entity.CategoryVO">
+        <id column="category_id" jdbcType="INTEGER" property="categoryId" />
+        <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+        <result column="category_level" jdbcType="INTEGER" property="categoryLevel" />
+        <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+        <result column="category_icon" jdbcType="VARCHAR" property="categoryIcon" />
+        <result column="category_slogan" jdbcType="VARCHAR" property="categorySlogan" />
+        <result column="category_pic" jdbcType="VARCHAR" property="categoryPic" />
+        <result column="category_bg_color" jdbcType="VARCHAR" property="categoryBgColor" />
+        <collection property="products" select="com.lb.mall.dao.ProductMapper.selectTop6ByCategory" column="category_id"/>
+    </resultMap>
+
+    <!-- 查询一级类别 -->
+    <select id="selectFirstLevelCategories" resultMap="CategoryVOMap3">
+        select
+            category_id,
+            category_name,
+            category_level,
+            parent_id,
+            category_icon,
+            category_slogan,
+            category_pic,
+            category_bg_color
+        from category
+        where category_level = 1
+    </select>
 </mapper>

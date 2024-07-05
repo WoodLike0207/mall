@@ -1,6 +1,5 @@
 package com.lb.mall.entity;
 
-import com.lb.mall.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +9,14 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.util.List;
 
+/**
+ *  首页类别商品推荐
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class CategoryVO {
+public class CategoryVO2 {
 
     private Integer categoryId;
 
@@ -33,10 +35,8 @@ public class CategoryVO {
     private String categoryBgColor;
 
     // 实现首页的类别显示
-    private List<CategoryVO> categories;
+    private List<Category> categories;
 
     // 实现首页分类商品推荐
     private List<ProductVO> products;
-
-
 }

@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         if (users.size() == 0){
             return new ResultVo(RespStatus.NO,"用户名不存在",null);
         }else {
-            String md5Pwd = MD5Utils.md5(password);
+             String md5Pwd = MD5Utils.md5(password);
             if (users.get(0).getPassword().equals(md5Pwd)){
 
                 JwtBuilder builder = Jwts.builder();
