@@ -67,6 +67,7 @@
     FROM product_comments c
     INNER JOIN users u
     ON u.user_id = c.user_id
-    WHERE c.product_id = #{productId};
+    WHERE c.product_id = #{productId}
+    limit #{start},#{limit}
   </select>
 </mapper>

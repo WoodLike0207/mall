@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 
 public interface ProductCommentsService {
-    ResultVo listCommentsByProductId(String productId);
+    ResultVo listCommentsByProductId(String productId,int pageNum,int limit);
 }

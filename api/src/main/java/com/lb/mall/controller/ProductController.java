@@ -4,6 +4,8 @@ import com.lb.mall.service.ProductCommentsService;
 import com.lb.mall.service.ProductService;
 import com.lb.mall.vo.ResultVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +38,12 @@ public class ProductController {
     }
 
     @ApiOperation("商品评论信息查询接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(dataType = "int",name = "pageNum",value = "当前页码",required = true),
+            @ApiImplicitParam(dataType = "int",name = "limit",value = "每页显示条数",required = true)
+    })
     @GetMapping("/detail-comments/{pid}")
-    public ResultVo getProductComments(@PathVariable("pid") String pid){
-        return productCommentsService.listCommentsByProductId(pid);
+    public ResultVo getProductComments(@PathVariable("pid") String pid,int pageNum,int limit){
+        return productCommentsService.listCommentsByProductId(pid,pageNum,limit);
     }
 }

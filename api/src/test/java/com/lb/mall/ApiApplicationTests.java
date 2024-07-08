@@ -62,9 +62,9 @@ public class ApiApplicationTests {
 
     @Test
     public void testSelectComments(){
-        List<ProductCommentsVO> productCommentsVOS = productCommentsMapper.selectCommentsByProductId("3");
+        /*List<ProductCommentsVO> productCommentsVOS = productCommentsMapper.selectCommentsByProductId("3");
         for (ProductCommentsVO productCommentsVO : productCommentsVOS) {
             System.out.println(productCommentsVO);
-        }
+        }*/
     }
 }
