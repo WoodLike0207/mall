@@ -1,5 +1,6 @@
 package com.lb.mall.controller;
 
+import com.lb.mall.service.ProductCommentsService;
 import com.lb.mall.service.ProductService;
 import com.lb.mall.vo.ResultVo;
 import io.swagger.annotations.Api;
@@ -19,6 +20,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProductCommentsService productCommentsService;
+
     @ApiOperation("商品基本信息查询接口")
     @GetMapping("/detail-info/{pid}")
     public ResultVo getProductBasicInfo(@PathVariable("pid") String pid){
@@ -29,5 +33,11 @@ public class ProductController {
     @GetMapping("/detail-params/{pid}")
     public ResultVo getProductParams(@PathVariable("pid") String pid){
         return productService.getProductParamsById(pid);
+    }
+
+    @ApiOperation("商品评论信息查询接口")
+    @GetMapping("/detail-comments/{pid}")
+    public ResultVo getProductComments(@PathVariable("pid") String pid){
+        return productCommentsService.listCommentsByProductId(pid);
     }
 }

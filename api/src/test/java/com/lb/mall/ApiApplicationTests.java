@@ -2,9 +2,11 @@ package com.lb.mall;
 
 import com.lb.ApiApplication;
 import com.lb.mall.dao.CategoryMapper;
+import com.lb.mall.dao.ProductCommentsMapper;
 import com.lb.mall.dao.ProductMapper;
 import com.lb.mall.entity.Category;
 import com.lb.mall.entity.CategoryVO;
+import com.lb.mall.entity.ProductCommentsVO;
 import com.lb.mall.entity.ProductVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +25,9 @@ public class ApiApplicationTests {
 
     @Autowired
     private ProductMapper productMapper;
+
+    @Autowired
+    private ProductCommentsMapper productCommentsMapper;
 
     @Test
     public void contextLoads(){
@@ -52,6 +57,14 @@ public class ApiApplicationTests {
         List<CategoryVO> categoryVOS = categoryMapper.selectFirstLevelCategories();
         for (CategoryVO categoryVO : categoryVOS) {
             System.out.println(categoryVO);
+        }
+    }
+
+    @Test
+    public void testSelectComments(){
+        List<ProductCommentsVO> productCommentsVOS = productCommentsMapper.selectCommentsByProductId("3");
+        for (ProductCommentsVO productCommentsVO : productCommentsVOS) {
+            System.out.println(productCommentsVO);
         }
     }
 }
