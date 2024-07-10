@@ -23,7 +23,8 @@ public class CheckTokenInterceptor implements HandlerInterceptor {
 
         String token = request.getHeader("token");
         if (token == null){
-            return false;
+            ResultVo resultVo = new ResultVo(RespStatus.LOGIN_FAIL_NOT,"请先登录!",null);
+            doResponse(response,resultVo);
         }else {
             try {
                 JwtParser parser = Jwts.parser();
@@ -33,17 +34,17 @@ public class CheckTokenInterceptor implements HandlerInterceptor {
                 Jws<Claims> claimsJws = parser.parseClaimsJws(token);
                 return true;
             }catch (ExpiredJwtException e){
-                ResultVo resultVO = new ResultVo(RespStatus.NO, "登录过期，请重新登录！",null);
+                ResultVo resultVO = new ResultVo(RespStatus.LOGIN_FAIL_OVERDUE, "登录过期，请重新登录！",null);
                 doResponse(response,resultVO);
             }catch (UnsupportedJwtException e){
                 ResultVo resultVO = new ResultVo(RespStatus.NO, "Token不合法！",null);
                 doResponse(response,resultVO);
             }catch (Exception e){
-                ResultVo resultVO = new ResultVo(RespStatus.NO, "请先登录！",null);
+                ResultVo resultVO = new ResultVo(RespStatus.LOGIN_FAIL_NOT, "请先登录！",null);
                 doResponse(response,resultVO);
             }
-            return false;
         }
+        return false;
     }
 
     private void doResponse(HttpServletResponse response,ResultVo resultVo) throws IOException {
