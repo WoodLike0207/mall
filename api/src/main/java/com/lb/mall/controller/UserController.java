@@ -21,7 +21,7 @@ public class UserController {
     @ApiOperation("用户登录")
     @GetMapping("/login")
     public ResultVo login(String username, String password){
-        return userService.checkLogin(username,password);
+        return userService.checkLogin(username, password);
     }
 
     @ApiOperation("用户注册")

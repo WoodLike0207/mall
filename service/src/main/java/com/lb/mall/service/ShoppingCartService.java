@@ -7,4 +7,7 @@ public interface ShoppingCartService {
     ResultVo addShoppingCart(ShoppingCart cart);
 
     ResultVo listShoppingCartByUserId(int userId);
+
+    ResultVo updateCartNum(int cartId,int cartNum);
+
 }

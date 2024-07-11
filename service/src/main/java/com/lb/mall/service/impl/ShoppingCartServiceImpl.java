@@ -42,4 +42,14 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         ResultVo resultVo = new ResultVo(RespStatus.OK, "success", list);
         return resultVo;
     }
+
+    @Override
+    public ResultVo updateCartNum(int cartId, int cartNum) {
+        int i = shoppingCartMapper.updateCartnumByCartid(cartId, cartNum);
+        if (i > 0){
+            return new ResultVo(RespStatus.OK,"update success",null);
+        }else {
+            return new ResultVo(RespStatus.NO,"update fail",null);
+        }
+    }
 }
