@@ -7,6 +7,7 @@ import com.lb.mall.vo.RespStatus;
 import com.lb.mall.vo.ResultVo;
 import io.jsonwebtoken.*;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,5 +23,12 @@ public class ShopcartController {
     public ResultVo addShoppingCart(@RequestBody ShoppingCart cart, @RequestHeader("token") String token){
         ResultVo resultVo = shoppingCartService.addShoppingCart(cart);
         return resultVo;
+    }
+
+    @GetMapping("/list")
+    @ApiImplicitParam(dataType = "int",name = "userId",value = "用户id",required = true)
+    public ResultVo list(Integer userId,@RequestHeader("token") String token){
+         ResultVo resultVo = shoppingCartService.listShoppingCartByUserId(userId);
+         return resultVo;
     }
 }

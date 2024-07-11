@@ -2,14 +2,18 @@ package com.lb.mall.service.impl;
 
 import com.lb.mall.dao.ShoppingCartMapper;
 import com.lb.mall.entity.ShoppingCart;
+import com.lb.mall.entity.ShoppingCartVO;
 import com.lb.mall.service.ShoppingCartService;
 import com.lb.mall.vo.RespStatus;
 import com.lb.mall.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -29,5 +33,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }else {
             return new ResultVo(RespStatus.NO,"fail",null);
         }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public ResultVo listShoppingCartByUserId(int userId) {
+        List<ShoppingCartVO> list = shoppingCartMapper.selectShopcartByUserId(userId);
+        ResultVo resultVo = new ResultVo(RespStatus.OK, "success", list);
+        return resultVo;
     }
 }

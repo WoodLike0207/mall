@@ -4,10 +4,8 @@ import com.lb.ApiApplication;
 import com.lb.mall.dao.CategoryMapper;
 import com.lb.mall.dao.ProductCommentsMapper;
 import com.lb.mall.dao.ProductMapper;
-import com.lb.mall.entity.Category;
-import com.lb.mall.entity.CategoryVO;
-import com.lb.mall.entity.ProductCommentsVO;
-import com.lb.mall.entity.ProductVO;
+import com.lb.mall.dao.ShoppingCartMapper;
+import com.lb.mall.entity.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +26,9 @@ public class ApiApplicationTests {
 
     @Autowired
     private ProductCommentsMapper productCommentsMapper;
+
+    @Autowired
+    private ShoppingCartMapper shoppingCartMapper;
 
     @Test
     public void contextLoads(){
@@ -66,5 +67,11 @@ public class ApiApplicationTests {
         for (ProductCommentsVO productCommentsVO : productCommentsVOS) {
             System.out.println(productCommentsVO);
         }*/
+    }
+
+    @Test
+    public void testShopCart(){
+        List<ShoppingCartVO> shoppingCartVOS = shoppingCartMapper.selectShopcartByUserId(6);
+        System.out.println(shoppingCartVOS);
     }
 }
