@@ -39,4 +39,11 @@ public class ShopcartController {
         ResultVo resultVO = shoppingCartService.updateCartNum(cartId, cartNum);
         return resultVO;
     }
+
+    @GetMapping("/listByCids")
+    @ApiImplicitParam(dataType = "String",name = "cids", value = "选择的购物⻋记录id",required = true)
+    public ResultVo listByCids(String cids,@RequestHeader("token")String token){
+        ResultVo resultVo = shoppingCartService.listShoppingCartsByCids(cids);
+        return resultVo;
+    }
 }

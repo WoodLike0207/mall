@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -51,5 +53,19 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }else {
             return new ResultVo(RespStatus.NO,"update fail",null);
         }
+    }
+
+    @Override
+    public ResultVo listShoppingCartsByCids(String cids) {
+        String[] arr = cids.split(",");
+        List<Integer> cartIds = new ArrayList<>();
+
+        for (int i = 0; i < arr.length; i++){
+            cartIds.add(Integer.parseInt(arr[i]));
+        }
+
+        List<ShoppingCartVO> list = shoppingCartMapper.selectShopcartByCids(cartIds);
+        ResultVo resultVo = new ResultVo(RespStatus.OK, "success", list);
+        return resultVo;
     }
 }
