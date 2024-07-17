@@ -3,6 +3,7 @@ package com.lb.mall.dao;
 import com.lb.mall.entity.Product;
 import com.lb.mall.entity.ProductVO;
 import com.lb.mall.general.GeneralDAO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,4 +18,10 @@ public interface ProductMapper extends GeneralDAO<Product> {
      * @return
      */
     List<ProductVO> selectTop6ByCategory(int cid);
+
+    List<ProductVO> selectProductByCategoryId(@Param("cid") int cid,
+                                              @Param("start") int start,
+                                              @Param("limit") int limit);
+
+    List<String> selectBrandCategoryId(int cid);
 }

@@ -6,6 +6,7 @@ import com.lb.mall.dao.ProductParamsMapper;
 import com.lb.mall.dao.ProductSkuMapper;
 import com.lb.mall.entity.*;
 import com.lb.mall.service.ProductService;
+import com.lb.mall.utils.PageHelper;
 import com.lb.mall.vo.RespStatus;
 import com.lb.mall.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +84,31 @@ public class ProductServiceImpl implements ProductService {
         }else {
             return new ResultVo(RespStatus.NO,"此商品可能为三无产品",null);
         }
+    }
+
+    @Override
+    public ResultVo getProductByCategoryId(int categoryId, int pageNum, int limit) {
+        // 1.查询分页数据
+        int start = (pageNum-1) * limit;
+        List<ProductVO> productVOS = productMapper.selectProductByCategoryId(categoryId, start, limit);
+
+        // 2.查询当前类别下的商品的总记录数
+        Example example = new Example(Product.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("categoryId",categoryId);
+        int count = productMapper.selectCountByExample(example);
+
+        // 3.计算总页数
+        int pageCount = count%limit == 0 ? count/limit : count/limit + 1;
+
+        // 4.封装返回数据
+        PageHelper<ProductVO> pageHelper = new PageHelper<>(count,pageCount,productVOS);
+        return new ResultVo(RespStatus.OK,"SUCCESS",pageHelper);
+    }
+
+    @Override
+    public ResultVo listBrands(int categoryId) {
+        List<String> brands = productMapper.selectBrandCategoryId(categoryId);
+        return new ResultVo(RespStatus.OK,"SUCCESS",brands);
     }
 }
