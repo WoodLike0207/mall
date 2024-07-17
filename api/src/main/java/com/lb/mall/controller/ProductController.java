@@ -68,4 +68,16 @@ public class ProductController {
     public ResultVo getBrandsByCategoryId(@PathVariable("cid") int cid){
         return productService.listBrands(cid);
     }
+
+    @ApiOperation("根据关键字查询商品接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(dataType = "string",name = "keyword",value = "搜索关键字",required = true),
+            @ApiImplicitParam(dataType = "int",name = "pageNum",value = "当前页码",required = true),
+            @ApiImplicitParam(dataType = "int",name = "limit",value = "每页显示条数",required = true)
+    })
+    @GetMapping("/listbykeyword")
+    public ResultVo searchProducts(String keyword,int pageNum,int limit){
+        return productService.searchProduct(keyword, pageNum, limit);
+    }
+
 }

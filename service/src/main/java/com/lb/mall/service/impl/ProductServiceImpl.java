@@ -108,7 +108,29 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ResultVo listBrands(int categoryId) {
-        List<String> brands = productMapper.selectBrandCategoryId(categoryId);
+        List<String> brands = productMapper.selectBrandByCategoryId(categoryId);
         return new ResultVo(RespStatus.OK,"SUCCESS",brands);
+    }
+
+    @Override
+    public ResultVo searchProduct(String kw, int pageNum, int limit) {
+        // 1.查询搜索结果
+        kw = "%"+kw+"%";
+        int start = (pageNum - 1) * limit;
+        List<ProductVO> productVOS = productMapper.selectProductByKeyword(kw, start, limit);
+
+        // 2.查询总记录数
+        Example example = new Example(Product.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andLike("productName",kw);
+        int count = productMapper.selectCountByExample(example);
+
+        // 3.计算总页数
+        int pageCount = count%limit==0 ? count/limit : count/limit+1;
+
+        // 4.封装返回数据
+        PageHelper<ProductVO> pageHelper = new PageHelper<>(count, pageCount, productVOS);
+        ResultVo resultVo = new ResultVo(RespStatus.OK,"success",pageHelper);
+        return resultVo;
     }
 }

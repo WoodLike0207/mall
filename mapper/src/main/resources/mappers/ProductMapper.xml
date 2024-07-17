@@ -87,7 +87,23 @@
     limit #{start},#{limit}
   </select>
 
-  <select id="selectBrandCategoryId" resultSets="java.util.List" resultType="String">
+  <select id="selectProductByKeyword" resultMap="ProductVOMap2">
+    SELECT
+      product_id,
+      product_name,
+      category_id,
+      root_category_id,
+      sold_num,
+      product_status,
+      content,
+      create_time,
+      update_time
+    FROM product
+    WHERE product_name like #{kw}
+    limit #{start},#{limit}
+  </select>
+
+  <select id="selectBrandByCategoryId" resultSets="java.util.List" resultType="String">
     SELECT
         DISTINCT brand
     FROM product_params
