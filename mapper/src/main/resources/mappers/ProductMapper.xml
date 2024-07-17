@@ -115,4 +115,17 @@
         WHERE category_id = #{cid}
         )
   </select>
+
+  <select id="selectBrandByKeyword" resultSets="java.util.List" resultType="String">
+    SELECT
+      DISTINCT brand
+    FROM product_params
+    WHERE product_id
+            IN (
+            SELECT
+              product_id
+            FROM product
+            WHERE product_name like #{kw}
+          )
+  </select>
 </mapper>

@@ -80,4 +80,11 @@ public class ProductController {
         return productService.searchProduct(keyword, pageNum, limit);
     }
 
+    @ApiOperation("根据关键字查询商品品牌接口")
+    @ApiImplicitParam(dataType = "string",name = "keyword",value = "搜索关键字",required = true)
+    @GetMapping("/listbrands-keyword")
+    public ResultVo getBrandsByKeyword(String keyword){
+        return productService.listBrands(keyword);
+    }
+
 }

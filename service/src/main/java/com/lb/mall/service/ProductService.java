@@ -14,4 +14,6 @@ public interface ProductService {
     ResultVo listBrands(int categoryId);
 
     ResultVo searchProduct(String kw,int pageNum,int limit);
+
+    ResultVo listBrands(String kw);
 }

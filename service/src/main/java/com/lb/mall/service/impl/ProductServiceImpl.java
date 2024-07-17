@@ -133,4 +133,11 @@ public class ProductServiceImpl implements ProductService {
         ResultVo resultVo = new ResultVo(RespStatus.OK,"success",pageHelper);
         return resultVo;
     }
+
+    @Override
+    public ResultVo listBrands(String kw) {
+        kw = '%'+kw+'%';
+        List<String> brands = productMapper.selectBrandByKeyword(kw);
+        return new ResultVo(RespStatus.OK,"success",brands);
+    }
 }
