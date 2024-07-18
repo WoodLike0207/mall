@@ -8,6 +8,9 @@ import com.lb.mall.service.impl.OrderServiceImpl;
 import com.lb.mall.vo.RespStatus;
 import com.lb.mall.vo.ResultVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -67,6 +70,20 @@ public class OrderController {
     @GetMapping("/status/{oid}")
     public ResultVo getOrderStatus(@PathVariable("oid") String orderId, @RequestHeader("token") String token){
         ResultVo resultVo = orderService.getOrderById(orderId);
+        return resultVo;
+    }
+
+    @GetMapping("/list")
+    @ApiOperation("订单查询接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(dataType = "string",name = "userId",value = "用户ID",required = true),
+            @ApiImplicitParam(dataType = "string",name = "status",value = "订单状态",required = true),
+            @ApiImplicitParam(dataType = "int",name = "pageNum",value = "当前页码",required = true),
+            @ApiImplicitParam(dataType = "int",name = "limit",value = "每页显示条数",required = true)
+    })
+    public ResultVo list(@RequestHeader("token")String token,
+                         String userId,String status,int pageNum,int limit){
+        ResultVo resultVo = orderService.listOrders(userId, status, pageNum, limit);
         return resultVo;
     }
 }

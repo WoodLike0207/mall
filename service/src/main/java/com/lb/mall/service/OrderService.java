@@ -13,4 +13,6 @@ public interface OrderService {
     ResultVo getOrderById(String orderId);
 
     void closeOrder(String orderId);
+
+    ResultVo listOrders(String userId,String status,int pageNum,int limit);
 }

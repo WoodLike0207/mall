@@ -3,6 +3,7 @@ package com.lb.mall.controller;
 import com.lb.mall.entity.Users;
 import com.lb.mall.service.UserService;
 import com.lb.mall.vo.BasicResultVO;
+import com.lb.mall.vo.RespStatus;
 import com.lb.mall.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,5 +29,11 @@ public class UserController {
     @PostMapping("/regist")
     public ResultVo regist(@RequestBody Users user){
         return userService.userRegist(user.getUsername(),user.getPassword());
+    }
+
+    @ApiOperation("校验token是否过期")
+    @GetMapping("/check")
+    public ResultVo userTokenCheck(@RequestHeader("token") String token){
+        return new ResultVo(RespStatus.OK,"success",null);
     }
 }
