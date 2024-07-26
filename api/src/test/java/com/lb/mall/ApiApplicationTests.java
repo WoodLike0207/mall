@@ -4,16 +4,15 @@ import com.lb.ApiApplication;
 import com.lb.mall.dao.CategoryMapper;
 import com.lb.mall.dao.ProductCommentsMapper;
 import com.lb.mall.dao.ProductMapper;
-import com.lb.mall.entity.Category;
-import com.lb.mall.entity.CategoryVO;
-import com.lb.mall.entity.ProductCommentsVO;
-import com.lb.mall.entity.ProductVO;
+import com.lb.mall.dao.ShoppingCartMapper;
+import com.lb.mall.entity.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -28,6 +27,9 @@ public class ApiApplicationTests {
 
     @Autowired
     private ProductCommentsMapper productCommentsMapper;
+
+    @Autowired
+    private ShoppingCartMapper shoppingCartMapper;
 
     @Test
     public void contextLoads(){
@@ -66,5 +68,14 @@ public class ApiApplicationTests {
         for (ProductCommentsVO productCommentsVO : productCommentsVOS) {
             System.out.println(productCommentsVO);
         }*/
+    }
+
+    @Test
+    public void testShopCart(){
+        List<Integer> cids = new ArrayList<>();
+        cids.add(18);
+        cids.add(19);
+        // List<ShoppingCartVO> shoppingCartVOS = shoppingCartMapper.selectShopcartByCids(cids);
+        // System.out.println(shoppingCartVOS);
     }
 }

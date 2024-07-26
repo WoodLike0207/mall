@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,4 +51,39 @@ public class ProductController {
     public ResultVo getProductCommentsCount(@PathVariable("pid") String pid){
         return productCommentsService.getCommentsCountByProductId(pid);
     }
+
+    @ApiOperation("根据类别查询商品接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(dataType = "int",name = "pageNum",value = "当前页码",required = true),
+            @ApiImplicitParam(dataType = "int",name = "limit",value = "每页显示条数",required = true)
+    })
+    @GetMapping("/listbycid/{cid}")
+    public ResultVo getProductsByCategoryId(@PathVariable("cid") int cid,int pageNum,int limit){
+        return productService.getProductByCategoryId(cid,pageNum,limit);
+    }
+
+    @ApiOperation("根据类别查询商品品牌接口")
+    @GetMapping("/listbrands/{cid}")
+    public ResultVo getBrandsByCategoryId(@PathVariable("cid") int cid){
+        return productService.listBrands(cid);
+    }
+
+    @ApiOperation("根据关键字查询商品接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(dataType = "string",name = "keyword",value = "搜索关键字",required = true),
+            @ApiImplicitParam(dataType = "int",name = "pageNum",value = "当前页码",required = true),
+            @ApiImplicitParam(dataType = "int",name = "limit",value = "每页显示条数",required = true)
+    })
+    @GetMapping("/listbykeyword")
+    public ResultVo searchProducts(String keyword,int pageNum,int limit){
+        return productService.searchProduct(keyword, pageNum, limit);
+    }
+
+    @ApiOperation("根据关键字查询商品品牌接口")
+    @ApiImplicitParam(dataType = "string",name = "keyword",value = "搜索关键字",required = true)
+    @GetMapping("/listbrands-keyword")
+    public ResultVo getBrandsByKeyword(String keyword){
+        return productService.listBrands(keyword);
+    }
+
 }
