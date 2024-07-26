@@ -43,7 +43,7 @@ public class OrderController {
                 //data.put("total_fee",order.getActualAmount()*100+""); //⽀付⾦额
                 data.put("total_fee","1"); //⽀付⾦额
                 data.put("trade_type","NATIVE"); //交易类型
-                data.put("notify_url","http://wood.free.idcfengye.com/pay/callback"); //设置⽀付完成时的回调⽅法接⼝
+                data.put("notify_url","http://8.130.130.65:8080/pay/callback"); //设置⽀付完成时的回调⽅法接⼝
 
                 //发送请求，获取响应
                 //微信⽀付：申请⽀付连接

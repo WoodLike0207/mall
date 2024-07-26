@@ -12,6 +12,7 @@ import com.lb.mall.vo.ResultVo;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
@@ -23,6 +24,7 @@ import java.util.List;
 
 
 @Service
+@Slf4j
 public class  UserServiceImpl implements UserService {
 
     @Resource
@@ -40,7 +42,6 @@ public class  UserServiceImpl implements UserService {
 
             if (users.size() > 0 ){  // 账户已存在
                 return new ResultVo(RespStatus.NO,"用户名已经被注册",null);
-                //return BasicResultVO.fail(RespStatusEnum.FAIL,"用户名已经被注册");
             }
 
             String md5Pwd = MD5Utils.md5(password);
@@ -53,11 +54,9 @@ public class  UserServiceImpl implements UserService {
 
             int i = usersMapper.insertUseGeneratedKeys(user);
             if (i > 0){
-                //return BasicResultVO.success("注册成功",user);
                 return new ResultVo(RespStatus.OK,"注册成功",user);
             }else {
                 return new ResultVo(RespStatus.NO,"注册失败",null);
-                //return BasicResultVO.fail(RespStatusEnum.FAIL,"注册失败");
             }
         }
     }
@@ -88,6 +87,7 @@ public class  UserServiceImpl implements UserService {
                         .signWith(SignatureAlgorithm.HS256, "MALL666")  // 设置加密方式和加密密码
                         .compact();
 
+                log.info("用户登录成功");
                 return new ResultVo(RespStatus.OK,token, users.get(0));
             }else {
                 return new ResultVo(RespStatus.NO,"密码错误",null);
