@@ -1,0 +1,307 @@
+2024-07-26-20:34:34.070 INFO [main]-
+                org.springframework.boot.StartupInfoLogger:55>>Starting ApiApplication using Java 1.8.0_321 on LAPTOP-B6E59SHT with PID 21752 (D:\code\java.code\springboot\project\mall\api\target\classes started by Wood in D:\code\java.code\springboot\project\mall)
+2024-07-26-20:34:34.072 INFO [main]-
+                org.springframework.boot.SpringApplication:662>>No active profile set, falling back to default profiles: default
+2024-07-26-20:34:34.670 WARN [main]-
+                org.mybatis.logging.Logger:44>>No MyBatis mapper was found in '[com.lb]' package. Please check your configuration.
+2024-07-26-20:34:34.900 INFO [main]-
+                org.springframework.boot.web.embedded.tomcat.TomcatWebServer:108>>Tomcat initialized with port(s): 8080 (http)
+2024-07-26-20:34:34.905 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-26-20:34:34.905 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting service [Tomcat]
+2024-07-26-20:34:34.905 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting Servlet engine: [Apache Tomcat/9.0.44]
+2024-07-26-20:34:34.907 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Loaded Apache Tomcat Native library [1.2.39] using APR version [1.7.4].
+2024-07-26-20:34:34.908 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2024-07-26-20:34:34.908 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2024-07-26-20:34:34.911 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-07-26-20:34:34.983 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing Spring embedded WebApplicationContext
+2024-07-26-20:34:34.985 INFO [main]-
+                org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:289>>Root WebApplicationContext: initialization completed in 883 ms
+2024-07-26-20:34:35.037 INFO [main]-
+                com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure:56>>Init DruidDataSource
+2024-07-26-20:34:35.112 INFO [main]-
+                com.alibaba.druid.pool.DruidDataSource:983>>{dataSource-1} inited
+2024-07-26-20:34:35.712 INFO [main]-
+                springfox.documentation.spring.web.WebMvcPropertySourcedRequestMappingHandlerMapping:69>>Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2024-07-26-20:34:35.783 INFO [main]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:181>>Initializing ExecutorService 'applicationTaskExecutor'
+2024-07-26-20:34:35.850 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2024-07-26-20:34:35.851 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2024-07-26-20:34:35.851 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2024-07-26-20:34:35.851 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:83>>Clear EntityHelper entityTableMap cache.
+2024-07-26-20:34:35.878 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1220>>Using default implementation for ThreadExecutor
+2024-07-26-20:34:35.885 INFO [main]-
+                org.quartz.core.SchedulerSignalerImpl:61>>Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2024-07-26-20:34:35.885 INFO [main]-
+                org.quartz.core.QuartzScheduler:229>>Quartz Scheduler v.2.3.2 created.
+2024-07-26-20:34:35.885 INFO [main]-
+                org.quartz.simpl.RAMJobStore:155>>RAMJobStore initialized.
+2024-07-26-20:34:35.886 INFO [main]-
+                org.quartz.core.QuartzScheduler:294>>Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2024-07-26-20:34:35.886 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1374>>Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2024-07-26-20:34:35.886 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1378>>Quartz scheduler version: 2.3.2
+2024-07-26-20:34:35.886 INFO [main]-
+                org.quartz.core.QuartzScheduler:2293>>JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@41ece227
+2024-07-26-20:34:35.889 INFO [main]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:181>>Initializing ExecutorService 'taskScheduler'
+2024-07-26-20:34:35.918 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting ProtocolHandler ["http-nio-8080"]
+2024-07-26-20:34:35.932 INFO [main]-
+                org.springframework.boot.web.embedded.tomcat.TomcatWebServer:220>>Tomcat started on port(s): 8080 (http) with context path ''
+2024-07-26-20:34:35.933 INFO [main]-
+                springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper:93>>Documentation plugins bootstrapped
+2024-07-26-20:34:35.935 INFO [main]-
+                springfox.documentation.spring.web.plugins.AbstractDocumentationPluginsBootstrapper:79>>Found 1 custom documentation plugin(s)
+2024-07-26-20:34:35.958 INFO [main]-
+                springfox.documentation.spring.web.scanners.ApiListingReferenceScanner:44>>Scanning for api listing references
+2024-07-26-20:34:36.045 INFO [main]-
+                springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:41>>Generating unique operation named: listUsingGET_1
+2024-07-26-20:34:36.053 INFO [main]-
+                org.springframework.scheduling.quartz.SchedulerFactoryBean:727>>Starting Quartz Scheduler now
+2024-07-26-20:34:36.053 INFO [main]-
+                org.quartz.core.QuartzScheduler:547>>Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2024-07-26-20:34:36.060 INFO [main]-
+                org.springframework.boot.StartupInfoLogger:61>>Started ApiApplication in 2.302 seconds (JVM running for 2.924)
+2024-07-26-20:35:11.111 INFO [http-nio-8080-exec-1]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-26-20:35:11.112 INFO [http-nio-8080-exec-1]-
+                org.springframework.web.servlet.FrameworkServlet:525>>Initializing Servlet 'dispatcherServlet'
+2024-07-26-20:35:11.113 INFO [http-nio-8080-exec-1]-
+                org.springframework.web.servlet.FrameworkServlet:547>>Completed initialization in 1 ms
+2024-07-26-20:35:11.213 INFO [http-nio-8080-exec-1]-
+                com.lb.mall.service.impl.UserServiceImpl:90>>用户登录成功
+2024-07-26-20:36:38.637 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:585>>Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2024-07-26-20:36:38.835 INFO [SpringContextShutdownHook]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:218>>Shutting down ExecutorService 'taskScheduler'
+2024-07-26-20:36:38.835 INFO [SpringContextShutdownHook]-
+                org.springframework.scheduling.quartz.SchedulerFactoryBean:845>>Shutting down Quartz Scheduler
+2024-07-26-20:36:38.835 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:666>>Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2024-07-26-20:36:38.835 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:585>>Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2024-07-26-20:36:38.835 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:740>>Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2024-07-26-20:36:38.836 INFO [SpringContextShutdownHook]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:218>>Shutting down ExecutorService 'applicationTaskExecutor'
+2024-07-26-20:36:38.837 INFO [SpringContextShutdownHook]-
+                com.alibaba.druid.pool.DruidDataSource:2024>>{dataSource-1} closing ...
+2024-07-26-20:36:38.839 INFO [SpringContextShutdownHook]-
+                com.alibaba.druid.pool.DruidDataSource:2096>>{dataSource-1} closed
+2024-07-26-20:36:41.797 INFO [main]-
+                org.springframework.boot.StartupInfoLogger:55>>Starting ApiApplication using Java 1.8.0_321 on LAPTOP-B6E59SHT with PID 34420 (D:\code\java.code\springboot\project\mall\api\target\classes started by Wood in D:\code\java.code\springboot\project\mall)
+2024-07-26-20:36:41.799 INFO [main]-
+                org.springframework.boot.SpringApplication:662>>No active profile set, falling back to default profiles: default
+2024-07-26-20:36:42.384 WARN [main]-
+                org.mybatis.logging.Logger:44>>No MyBatis mapper was found in '[com.lb]' package. Please check your configuration.
+2024-07-26-20:36:42.623 INFO [main]-
+                org.springframework.boot.web.embedded.tomcat.TomcatWebServer:108>>Tomcat initialized with port(s): 8080 (http)
+2024-07-26-20:36:42.629 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-26-20:36:42.629 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting service [Tomcat]
+2024-07-26-20:36:42.629 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting Servlet engine: [Apache Tomcat/9.0.44]
+2024-07-26-20:36:42.630 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Loaded Apache Tomcat Native library [1.2.39] using APR version [1.7.4].
+2024-07-26-20:36:42.631 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2024-07-26-20:36:42.631 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2024-07-26-20:36:42.634 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-07-26-20:36:42.709 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing Spring embedded WebApplicationContext
+2024-07-26-20:36:42.710 INFO [main]-
+                org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:289>>Root WebApplicationContext: initialization completed in 883 ms
+2024-07-26-20:36:42.762 INFO [main]-
+                com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure:56>>Init DruidDataSource
+2024-07-26-20:36:42.835 INFO [main]-
+                com.alibaba.druid.pool.DruidDataSource:983>>{dataSource-1} inited
+2024-07-26-20:36:43.451 INFO [main]-
+                springfox.documentation.spring.web.WebMvcPropertySourcedRequestMappingHandlerMapping:69>>Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2024-07-26-20:36:43.512 INFO [main]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:181>>Initializing ExecutorService 'applicationTaskExecutor'
+2024-07-26-20:36:43.584 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2024-07-26-20:36:43.584 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2024-07-26-20:36:43.585 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2024-07-26-20:36:43.585 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:83>>Clear EntityHelper entityTableMap cache.
+2024-07-26-20:36:43.616 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1220>>Using default implementation for ThreadExecutor
+2024-07-26-20:36:43.623 INFO [main]-
+                org.quartz.core.SchedulerSignalerImpl:61>>Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2024-07-26-20:36:43.624 INFO [main]-
+                org.quartz.core.QuartzScheduler:229>>Quartz Scheduler v.2.3.2 created.
+2024-07-26-20:36:43.624 INFO [main]-
+                org.quartz.simpl.RAMJobStore:155>>RAMJobStore initialized.
+2024-07-26-20:36:43.625 INFO [main]-
+                org.quartz.core.QuartzScheduler:294>>Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2024-07-26-20:36:43.625 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1374>>Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2024-07-26-20:36:43.625 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1378>>Quartz scheduler version: 2.3.2
+2024-07-26-20:36:43.625 INFO [main]-
+                org.quartz.core.QuartzScheduler:2293>>JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@21090c88
+2024-07-26-20:36:43.629 INFO [main]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:181>>Initializing ExecutorService 'taskScheduler'
+2024-07-26-20:36:43.661 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting ProtocolHandler ["http-nio-8080"]
+2024-07-26-20:36:43.677 INFO [main]-
+                org.springframework.boot.web.embedded.tomcat.TomcatWebServer:220>>Tomcat started on port(s): 8080 (http) with context path ''
+2024-07-26-20:36:43.678 INFO [main]-
+                springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper:93>>Documentation plugins bootstrapped
+2024-07-26-20:36:43.680 INFO [main]-
+                springfox.documentation.spring.web.plugins.AbstractDocumentationPluginsBootstrapper:79>>Found 1 custom documentation plugin(s)
+2024-07-26-20:36:43.706 INFO [main]-
+                springfox.documentation.spring.web.scanners.ApiListingReferenceScanner:44>>Scanning for api listing references
+2024-07-26-20:36:43.802 INFO [main]-
+                springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:41>>Generating unique operation named: listUsingGET_1
+2024-07-26-20:36:43.810 INFO [main]-
+                org.springframework.scheduling.quartz.SchedulerFactoryBean:727>>Starting Quartz Scheduler now
+2024-07-26-20:36:43.810 INFO [main]-
+                org.quartz.core.QuartzScheduler:547>>Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2024-07-26-20:36:43.817 INFO [main]-
+                org.springframework.boot.StartupInfoLogger:61>>Started ApiApplication in 2.315 seconds (JVM running for 2.891)
+2024-07-26-20:37:23.534 INFO [http-nio-8080-exec-1]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-26-20:37:23.534 INFO [http-nio-8080-exec-1]-
+                org.springframework.web.servlet.FrameworkServlet:525>>Initializing Servlet 'dispatcherServlet'
+2024-07-26-20:37:23.535 INFO [http-nio-8080-exec-1]-
+                org.springframework.web.servlet.FrameworkServlet:547>>Completed initialization in 1 ms
+2024-07-26-20:37:23.629 INFO [http-nio-8080-exec-1]-
+                com.lb.mall.service.impl.UserServiceImpl:90>>用户登录成功
+2024-07-26-20:38:08.912 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:585>>Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2024-07-26-20:38:09.449 INFO [SpringContextShutdownHook]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:218>>Shutting down ExecutorService 'taskScheduler'
+2024-07-26-20:38:09.451 INFO [SpringContextShutdownHook]-
+                org.springframework.scheduling.quartz.SchedulerFactoryBean:845>>Shutting down Quartz Scheduler
+2024-07-26-20:38:09.452 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:666>>Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2024-07-26-20:38:09.452 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:585>>Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2024-07-26-20:38:09.452 INFO [SpringContextShutdownHook]-
+                org.quartz.core.QuartzScheduler:740>>Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2024-07-26-20:38:09.453 INFO [SpringContextShutdownHook]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:218>>Shutting down ExecutorService 'applicationTaskExecutor'
+2024-07-26-20:38:09.457 INFO [SpringContextShutdownHook]-
+                com.alibaba.druid.pool.DruidDataSource:2024>>{dataSource-1} closing ...
+2024-07-26-20:38:09.462 INFO [SpringContextShutdownHook]-
+                com.alibaba.druid.pool.DruidDataSource:2096>>{dataSource-1} closed
+2024-07-26-20:38:12.404 INFO [main]-
+                org.springframework.boot.StartupInfoLogger:55>>Starting ApiApplication using Java 1.8.0_321 on LAPTOP-B6E59SHT with PID 25608 (D:\code\java.code\springboot\project\mall\api\target\classes started by Wood in D:\code\java.code\springboot\project\mall)
+2024-07-26-20:38:12.405 INFO [main]-
+                org.springframework.boot.SpringApplication:662>>No active profile set, falling back to default profiles: default
+2024-07-26-20:38:12.983 WARN [main]-
+                org.mybatis.logging.Logger:44>>No MyBatis mapper was found in '[com.lb]' package. Please check your configuration.
+2024-07-26-20:38:13.214 INFO [main]-
+                org.springframework.boot.web.embedded.tomcat.TomcatWebServer:108>>Tomcat initialized with port(s): 8080 (http)
+2024-07-26-20:38:13.221 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing ProtocolHandler ["http-nio-8080"]
+2024-07-26-20:38:13.221 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting service [Tomcat]
+2024-07-26-20:38:13.221 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting Servlet engine: [Apache Tomcat/9.0.44]
+2024-07-26-20:38:13.222 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Loaded Apache Tomcat Native library [1.2.39] using APR version [1.7.4].
+2024-07-26-20:38:13.223 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2024-07-26-20:38:13.223 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2024-07-26-20:38:13.225 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-07-26-20:38:13.296 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Initializing Spring embedded WebApplicationContext
+2024-07-26-20:38:13.297 INFO [main]-
+                org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:289>>Root WebApplicationContext: initialization completed in 861 ms
+2024-07-26-20:38:13.351 INFO [main]-
+                com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure:56>>Init DruidDataSource
+2024-07-26-20:38:13.428 INFO [main]-
+                com.alibaba.druid.pool.DruidDataSource:983>>{dataSource-1} inited
+2024-07-26-20:38:14.034 INFO [main]-
+                springfox.documentation.spring.web.WebMvcPropertySourcedRequestMappingHandlerMapping:69>>Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2024-07-26-20:38:14.097 INFO [main]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:181>>Initializing ExecutorService 'applicationTaskExecutor'
+2024-07-26-20:38:14.170 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.util.MsUtil CLASS_CACHE cache.
+2024-07-26-20:38:14.171 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.genid.GenIdUtil CACHE cache.
+2024-07-26-20:38:14.171 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:60>>Clear tk.mybatis.mapper.version.VersionUtil CACHE cache.
+2024-07-26-20:38:14.171 INFO [main]-
+                tk.mybatis.mapper.autoconfigure.MapperCacheDisabler:83>>Clear EntityHelper entityTableMap cache.
+2024-07-26-20:38:14.199 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1220>>Using default implementation for ThreadExecutor
+2024-07-26-20:38:14.206 INFO [main]-
+                org.quartz.core.SchedulerSignalerImpl:61>>Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2024-07-26-20:38:14.206 INFO [main]-
+                org.quartz.core.QuartzScheduler:229>>Quartz Scheduler v.2.3.2 created.
+2024-07-26-20:38:14.206 INFO [main]-
+                org.quartz.simpl.RAMJobStore:155>>RAMJobStore initialized.
+2024-07-26-20:38:14.207 INFO [main]-
+                org.quartz.core.QuartzScheduler:294>>Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2024-07-26-20:38:14.207 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1374>>Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2024-07-26-20:38:14.207 INFO [main]-
+                org.quartz.impl.StdSchedulerFactory:1378>>Quartz scheduler version: 2.3.2
+2024-07-26-20:38:14.207 INFO [main]-
+                org.quartz.core.QuartzScheduler:2293>>JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@15ac02d5
+2024-07-26-20:38:14.211 INFO [main]-
+                org.springframework.scheduling.concurrent.ExecutorConfigurationSupport:181>>Initializing ExecutorService 'taskScheduler'
+2024-07-26-20:38:14.248 INFO [main]-
+                org.apache.juli.logging.DirectJDKLog:173>>Starting ProtocolHandler ["http-nio-8080"]
+2024-07-26-20:38:14.263 INFO [main]-
+                org.springframework.boot.web.embedded.tomcat.TomcatWebServer:220>>Tomcat started on port(s): 8080 (http) with context path ''
+2024-07-26-20:38:14.264 INFO [main]-
+                springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper:93>>Documentation plugins bootstrapped
+2024-07-26-20:38:14.265 INFO [main]-
+                springfox.documentation.spring.web.plugins.AbstractDocumentationPluginsBootstrapper:79>>Found 1 custom documentation plugin(s)
+2024-07-26-20:38:14.290 INFO [main]-
+                springfox.documentation.spring.web.scanners.ApiListingReferenceScanner:44>>Scanning for api listing references
+2024-07-26-20:38:14.368 INFO [main]-
+                springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:41>>Generating unique operation named: listUsingGET_1
+2024-07-26-20:38:14.375 INFO [main]-
+                org.springframework.scheduling.quartz.SchedulerFactoryBean:727>>Starting Quartz Scheduler now
+2024-07-26-20:38:14.375 INFO [main]-
+                org.quartz.core.QuartzScheduler:547>>Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2024-07-26-20:38:14.382 INFO [main]-
+                org.springframework.boot.StartupInfoLogger:61>>Started ApiApplication in 2.272 seconds (JVM running for 2.848)
