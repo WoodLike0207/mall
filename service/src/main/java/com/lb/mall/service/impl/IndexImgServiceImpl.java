@@ -35,20 +35,46 @@ public class IndexImgServiceImpl implements IndexImgService {
             // string结构缓存轮播图信息
             String imgStr = stringRedisTemplate.boundValueOps("indexImgs").get();
 
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
             if (imgStr != null){
                 // 从redis中获取到了轮播图信息
                 JavaType javaType = objectMapper.getTypeFactory().constructParametricType(ArrayList.class, IndexImg.class);
                 indexImgs = objectMapper.readValue(imgStr, javaType);
 
             }else {
-                // 在redis没查到，则查询数据库
-                indexImgs = indexImgMapper.listIndexImgs();
+                synchronized (this){
+                    // 第⼆次查询redis
+                    String s = stringRedisTemplate.boundValueOps("indexImgs").get();
 
-                // 写到redis
-                stringRedisTemplate.boundValueOps("indexImgs").set(objectMapper.writeValueAsString(indexImgs));
+                    if (s == null){ //处理并发请求 这1000个请求中，只有第⼀个请求再次查询redis时依然为null
+                        // 在redis没查到，则查询数据库
+                        indexImgs = indexImgMapper.listIndexImgs();
 
-                // 设置过期时间为一天
-                stringRedisTemplate.boundValueOps("indexImgs").expire(1, TimeUnit.DAYS);
+                        // 缓存穿透处理
+                        // 如果数据库中查不到，就在redis写入不为null的空数据，设置过期时间
+                        if (indexImgs != null){
+                            // 写到redis
+                            stringRedisTemplate.boundValueOps("indexImgs").set(objectMapper.writeValueAsString(indexImgs));
+
+                            // 设置过期时间为一天
+                            stringRedisTemplate.boundValueOps("indexImgs").expire(1, TimeUnit.DAYS);
+                        }else {
+                            List<IndexImg> list = new ArrayList<>();
+                            stringRedisTemplate.boundValueOps("indexImgs").set(objectMapper.writeValueAsString(list));
+                            stringRedisTemplate.boundValueOps("indexImgs").expire(10,TimeUnit.SECONDS);
+                        }
+
+                    }else {
+                        JavaType javaType = objectMapper.getTypeFactory()
+                                .constructParametricType(ArrayList.class, IndexImg.class);
+                        indexImgs = objectMapper.readValue(s, javaType);
+                    }
+                }
 
             }
 
