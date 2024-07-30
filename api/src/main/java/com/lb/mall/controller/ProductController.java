@@ -1,5 +1,6 @@
 package com.lb.mall.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lb.mall.service.ProductCommentsService;
 import com.lb.mall.service.ProductService;
 import com.lb.mall.vo.ResultVo;
@@ -26,8 +27,12 @@ public class ProductController {
 
     @ApiOperation("商品基本信息查询接口")
     @GetMapping("/detail-info/{pid}")
-    public ResultVo getProductBasicInfo(@PathVariable("pid") String pid){
-        return productService.getProductBasicInfo(pid);
+    public ResultVo getProductBasicInfo(@PathVariable("pid") String pid)  {
+        try {
+            return productService.getProductBasicInfo(pid);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @ApiOperation("商品参数信息查询接口")

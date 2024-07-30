@@ -1,5 +1,6 @@
 package com.lb.mall.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lb.mall.service.CategoryService;
 import com.lb.mall.service.IndexImgService;
 import com.lb.mall.service.ProductService;
@@ -28,7 +29,11 @@ public class IndexController {
     @ApiOperation("首页轮播图接口")
     @GetMapping("/indeximg")
     public ResultVo listIndexImgs(){
-        return indexImgService.listIndexImgs();
+        try {
+            return indexImgService.listIndexImgs();
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @ApiOperation("商品分类查询接口")
