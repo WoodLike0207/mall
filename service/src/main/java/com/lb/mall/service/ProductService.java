@@ -1,11 +1,12 @@
 package com.lb.mall.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lb.mall.vo.ResultVo;
 
 public interface ProductService {
     ResultVo listRecommendProducts();
 
-    ResultVo getProductBasicInfo(String productId);
+    ResultVo getProductBasicInfo(String productId) throws JsonProcessingException;
 
     ResultVo getProductParamsById(String productId);
 
