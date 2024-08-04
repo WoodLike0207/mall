@@ -1,5 +1,7 @@
 package com.lb.mall.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lb.mall.dao.UsersMapper;
 import com.lb.mall.entity.Users;
 import com.lb.mall.service.UserService;
@@ -13,6 +15,8 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
@@ -21,6 +25,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 @Service
@@ -29,6 +34,9 @@ public class  UserServiceImpl implements UserService {
 
     @Resource
     private UsersMapper usersMapper;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     @Transactional
     public ResultVo userRegist(String name, String password) {
@@ -87,7 +95,15 @@ public class  UserServiceImpl implements UserService {
                         .signWith(SignatureAlgorithm.HS256, "MALL666")  // 设置加密方式和加密密码
                         .compact();
 
-                log.info("用户登录成功");
+                // 当⽤户登录成功之后，以token为key 将⽤户信息保存到redis
+                try {
+                    String userInfo = objectMapper.writeValueAsString(users.get(0));
+                    stringRedisTemplate.boundValueOps(token).set(userInfo,1, TimeUnit.MINUTES);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+
+
                 return new ResultVo(RespStatus.OK,token, users.get(0));
             }else {
                 return new ResultVo(RespStatus.NO,"密码错误",null);
