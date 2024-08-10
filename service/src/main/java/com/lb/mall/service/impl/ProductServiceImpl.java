@@ -1,5 +1,6 @@
 package com.lb.mall.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,6 +13,17 @@ import com.lb.mall.service.ProductService;
 import com.lb.mall.utils.PageHelper;
 import com.lb.mall.vo.RespStatus;
 import com.lb.mall.vo.ResultVo;
+import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -19,9 +31,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -37,6 +48,10 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    @Autowired
+    private RestHighLevelClient restHighLevelClient;
+
 
     @Override
     public ResultVo listRecommendProducts() {
@@ -159,23 +174,65 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ResultVo searchProduct(String kw, int pageNum, int limit) {
-        // 1.查询搜索结果
-        kw = "%"+kw+"%";
-        int start = (pageNum - 1) * limit;
-        List<ProductVO> productVOS = productMapper.selectProductByKeyword(kw, start, limit);
+        ResultVo resultVo = null;
+        try {
 
-        // 2.查询总记录数
-        Example example = new Example(Product.class);
-        Example.Criteria criteria = example.createCriteria();
-        criteria.andLike("productName",kw);
-        int count = productMapper.selectCountByExample(example);
+            // 1.查询搜索结果
+            int start = (pageNum - 1) * limit;
+            // 从ES查询数据
+            SearchRequest searchRequest = new SearchRequest("mall_product_index");
 
-        // 3.计算总页数
-        int pageCount = count%limit==0 ? count/limit : count/limit+1;
+            SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
-        // 4.封装返回数据
-        PageHelper<ProductVO> pageHelper = new PageHelper<>(count, pageCount, productVOS);
-        ResultVo resultVo = new ResultVo(RespStatus.OK,"success",pageHelper);
+            searchSourceBuilder.query(QueryBuilders.multiMatchQuery(kw,"productName","productSkuName"));
+
+            searchSourceBuilder.from(start);
+            searchSourceBuilder.size(limit);
+
+            // 高亮显示
+            HighlightBuilder highlightBuilder = new HighlightBuilder();
+            HighlightBuilder.Field field1 = new HighlightBuilder.Field("productName");
+            HighlightBuilder.Field field2 = new HighlightBuilder.Field("productSkuName");
+            highlightBuilder.field(field1);
+            highlightBuilder.field(field2);
+            highlightBuilder.preTags("<label style='color:red'>");
+            highlightBuilder.postTags("</label>");
+            searchSourceBuilder.highlighter(highlightBuilder);
+            searchRequest.source(searchSourceBuilder);
+
+            // 执行检索
+            SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+
+            // 封装查询结果
+            SearchHits hits = searchResponse.getHits();
+            int count = (int) hits.getTotalHits().value;
+
+            // 计算总页数
+            int pageCount = count%limit==0 ? count/limit : count/limit+1;
+            List<Product4ES> products = new ArrayList<>();
+            Iterator<SearchHit> iterator = hits.iterator();
+            while (iterator.hasNext()){
+                SearchHit searchHit = iterator.next();
+                Product4ES product4ES = JSON.parseObject(searchHit.getSourceAsString(), Product4ES.class);
+
+                Map<String, HighlightField> highlightFields = searchHit.getHighlightFields();
+                HighlightField highlightField1 = highlightFields.get("productName");
+                if (highlightField1 != null){
+                    String highLightProductName = Arrays.toString(highlightField1.fragments());
+                    product4ES.setProductName(highLightProductName);
+                }
+
+                products.add(product4ES);
+            }
+
+            // 4.封装返回数据
+            PageHelper<Product4ES> pageHelper = new PageHelper<>(count, pageCount, products);
+            resultVo = new ResultVo(RespStatus.OK,"success",pageHelper);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         return resultVo;
     }
 

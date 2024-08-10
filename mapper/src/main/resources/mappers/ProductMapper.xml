@@ -103,6 +103,20 @@
     limit #{start},#{limit}
   </select>
 
+  <select id="selectProducts" resultMap="ProductVOMap2">
+    SELECT
+      product_id,
+      product_name,
+      category_id,
+      root_category_id,
+      sold_num,
+      product_status,
+      content,
+      create_time,
+      update_time
+    FROM product
+  </select>
+
   <select id="selectBrandByCategoryId" resultSets="java.util.List" resultType="String">
     SELECT
         DISTINCT brand
