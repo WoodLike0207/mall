@@ -38,6 +38,8 @@ public interface ProductMapper extends GeneralDAO<Product> {
                                               @Param("start") int start,
                                               @Param("limit") int limit);
 
+    List<ProductVO> selectProducts();
+
     /**
      * 根据搜索关键字查询相关商品的品牌列表
      * @param kw

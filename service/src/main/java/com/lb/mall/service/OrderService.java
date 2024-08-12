@@ -6,7 +6,7 @@ import com.lb.mall.vo.ResultVo;
 import java.util.Map;
 
 public interface OrderService {
-    Map<String,String> addOrder(String cids, Orders order);
+    Map<String,String> addOrder(String cids, Orders order) throws InterruptedException;
 
     int updateOrderStatus(String orderId,String status);
 

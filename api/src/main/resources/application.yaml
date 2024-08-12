@@ -10,6 +10,9 @@ spring:
     host: 8.130.130.65
     database: 0
     password: 123456
+  elasticsearch:
+    rest:
+      uris: http://8.130.130.65:9200
 
 
 mybatis:
